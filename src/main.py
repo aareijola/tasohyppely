@@ -1,14 +1,13 @@
 from GUI import GUI
-from rectbutton import RectButton
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
-
+from PyQt5.QtWidgets import QApplication
 
 def main():
     global app
     app = QApplication(sys.argv)
 
     window = GUI()
+    window.show()
     
     sys.exit(app.exec_())
 
