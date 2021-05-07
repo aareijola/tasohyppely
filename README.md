@@ -2,23 +2,25 @@
 
 y2 kevät 2021 tasohyppelypeliprojekti README
 
-1) Toteutetut ominaisuudet
-- Toimiva ikkuna + menuelementit
-- menujen ja peliscenen välillä vaihtelu (peli ei vielä pelattava)
-- toimivat helposti kustomoitavat napit
+Author: Aaro Reijola
 
-2) Käyttöohje
-- Ohjelman voi ajaa ja käynnistäminen tapahtuu ajamalla main.py kansiosta src
-- Käynnistys avaa main menun joka on käytännössä toiminnallisesti valmis
-- Peliosuuden prototyyppi on olemassa muttei vielä yhdistetty itse ohjelmaan
+### Tiedosto- ja kansiorakenne
 
-3) Aikataulu
-- Aikaa projektiin käytetty n. 15h ja aikataulu tuntuu pitävän.
+- doc: projektin suunnitelma ja dokumentaatio
+- src: projektin koodi
+- src/
+	- data: pelissä käytetyt grafiikkaelementit
+	- levels: tallennettujen tasojen data. Testien ajaminen luo tähän kansioon
+		roskatiedostoja, jotka käyttäjä joutuu itse niin halutessaan poistamaan
 
-4) Muuta
-- Isoin ongelma on yksikkötestattavien osien keksiminen, kun käytännössä kaikki ohjelmassa on graafista
-- Selkein muutos suunnitelmaan on GUI:n ja mainWindowin yhdistäminen siten, että nyt GUI perii QMainWindow-luokan, ja nyt näkymän muokkaaminen on helppoa ja keskitettyä.
+### Asennusohje
 
+- Ohjelma käyttää PyQt5-kirjastoa, jonka asennuksen kuvaamista ei vaadittu.
 
+### Käyttöohje
 
+	- Ohjelma käynnistetään ajamalla src/main.py
+	
 
+	- Huom! WSL (Windows subsystem for linux), jota osa käyttää ohjelmistokehitykseen
+  	  ei tue graafisten ohjelmien ajamista terminaalista
