@@ -89,15 +89,19 @@ class GUI(QtWidgets.QMainWindow):
     
     def startGame(self, levelname):
         self.game = platformerGame(levelname)
-        self.initGameOver()
-        self.initView()
-        self.initLevelCompleteWindow()
-        self.centralWidget().layout().addWidget(self.view)
-        self.hideStartMenu()
-        self.view.show()
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.updateGUI)
-        self.timer.start(10)
+        if self.game.unplayable:
+            self.game = None
+            self.showStartMenu()
+        else:
+            self.initGameOver()
+            self.initView()
+            self.initLevelCompleteWindow()
+            self.centralWidget().layout().addWidget(self.view)
+            self.hideStartMenu()
+            self.view.show()
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.updateGUI)
+            self.timer.start(10)
     
     def startTutorial(self):
         self.startGame('Default')

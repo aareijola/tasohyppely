@@ -73,4 +73,5 @@ class GameLevel():
             character.setPos(character.trajectory[0])
         
         
+
         return scene

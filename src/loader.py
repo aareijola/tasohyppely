@@ -5,6 +5,9 @@ from PyQt5.QtWidgets import QGraphicsRectItem
 from gamelevel import GameLevel
 
 def loadLevel(levelname) -> GameLevel:
+    """
+    Creates a GameLevel structure from file with name 'levelname'.txt
+    """
     level = GameLevel()
     try:
         f = open('levels/' +(levelname) + '.txt', 'r')
@@ -45,8 +48,13 @@ def loadLevel(levelname) -> GameLevel:
             else:
                 pass
         f.close()
-        return level
+        if level.isPlayable():
+            return level
+        else:
+            return None
     except OSError:
+        return None
+    except ValueError:
         return None
 
 
@@ -84,12 +92,8 @@ def saveLevel(level) -> bool:
             for coordinate in character.trajectory:
                 f.write('{},{};'.format(coordinate.x(), coordinate.y()))
             f.write('\n')
-            
-
-        
         f.write("GOAL:{},{}\n".format(level.finish.x(), level.finish.y()))
-        
-        
+
         f.close()
         return True
     except OSError:

@@ -14,19 +14,22 @@ class platformerGame():
     def __init__(self, levelname):
 
         self.level = loadLevel(levelname)
-        self.scene = self.level.generateScene()
-        self.player = self.level.player
-        self.characters = self.level.characters
-        self.characters.append(self.player)
+        if not self.level:
+            self.unplayable = True
+        else:
+            self.unplayable = False
+            self.scene = self.level.generateScene()
+            self.player = self.level.player
+            if len(self.player.collidingItems()) > 0:
+                self.unplayable = True
+            else:
+                self.characters = self.level.characters
+                self.characters.append(self.player)
 
-        self.collectedCoins = 0
-        self.totalCoins = len(self.level.coins)
-        self.paused = False
-        self.gameover = False
-
-        '''spike = Spike()
-        spike.moveBy(-100, -100)
-        self.scene.addItem(spike)'''
+                self.collectedCoins = 0
+                self.totalCoins = len(self.level.coins)
+                self.paused = False
+                self.gameover = False
 
 
     def gameText(self):

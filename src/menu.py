@@ -42,7 +42,7 @@ class mainMenu(menu):
     def __init__(self):
         super().__init__()
         self.header.setPixmap(QPixmap("data/title.png"))
-        self.buttons[0].setText("Aloita tutoriaali")
+        self.buttons[0].setText("Opettele pelaamaan")
         self.buttons[1].setText("Lataa oma kenttä")
         self.buttons[2].setText("Kenttäeditori")
         self.buttons[3].setText("Poistu")
@@ -188,7 +188,8 @@ class NameAlertBox(alertPopup):
     def __init__(self):
         super().__init__()
         self.setMaximumWidth(menu.MENUWIDTH)
-        txt = QLabel("Anna kentällesi nimi:")
+        txt = QLabel("Anna kentällesi nimi:\n" + \
+            "Huom: ääkköset ja erikois-\nmerkit poistetaan :)")
         font = QtGui.QFont()
         font.setPointSize(12)
         txt.setFont(font)

@@ -50,6 +50,8 @@ class LevelEditor(QGraphicsView):
             self.level = GameLevel()
         else:
             self.level = loadLevel(level)
+            if not self.level:
+                self.level = GameLevel()
         self.level.setSpawn(QPointF(0,0))
         self.scene = self.level.generateScene()
         self.setScene(self.scene)
@@ -270,6 +272,7 @@ class LevelEditor(QGraphicsView):
     
     def setLevelName(self):
         name = self.nameAlertBox.line.text()
+        name = "".join(l for l in name if l.isalnum() and l not in 'öÖäÄ')
         self.level.setName(name)
         saveLevel(self.level)
         self.exitbutton.click()
