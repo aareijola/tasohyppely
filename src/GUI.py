@@ -64,7 +64,6 @@ class GUI(QtWidgets.QMainWindow):
         self.view.hide()
 
     
-    
     def initWindow(self):
         self.setCentralWidget(QWidget())
         self.setGeometry(0, 0, 1280, 720)

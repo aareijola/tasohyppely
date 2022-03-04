@@ -3,12 +3,16 @@ from characterphysics import CharacterPhysics
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QGraphicsEllipseItem, QGraphicsItem, QGraphicsPolygonItem, QGraphicsRectItem
 from PyQt5.QtGui import QBrush, QColor, QColorConstants, QPen, QPixmap, QPolygonF
+import psykoosi
 
 
 class Character(QGraphicsRectItem):
 
     CHARSIZE = 64
     WORLDFLOOR = 1000
+    ENEMYBRUSH = psykoosi.ENEMY
+    PLAYERBRUSH = psykoosi.PLAYER
+    COINBRUSH = psykoosi.COIN 
 
     def __init__(self):
         super().__init__(0,0, Character.CHARSIZE, Character.CHARSIZE)
@@ -88,7 +92,7 @@ class Enemy(Character):
     def __init__(self):
         super().__init__()
         self.phys = CharacterPhysics(coef = Enemy.ENEMYSPEED)
-        self.setBrush(QBrush(QPixmap("data/enemy.png")))
+        self.setBrush(QBrush(QPixmap(Character.ENEMYBRUSH)))
         self.trajectory = []
         self.target = QPointF(self.scenePos())
         self.pointindex = 0
@@ -135,7 +139,7 @@ class Player(Character):
 
     def __init__(self):
         super().__init__()
-        self.setBrush(QBrush(QPixmap("data/player.png")))
+        self.setBrush(QBrush(QPixmap(Character.PLAYERBRUSH)))
         self.atFinish = False
 
     def dothemove(self):
@@ -166,7 +170,7 @@ class Coin(QGraphicsEllipseItem):
 
     def __init__(self, x, y):
         super().__init__(QRectF(0, 0,Character.CHARSIZE, Character.CHARSIZE))
-        self.setBrush(QBrush(QPixmap('data/coin.png')))
+        self.setBrush(QBrush(QPixmap(Character.COINBRUSH)))
         self.startX = x
         self.startY = y
 
@@ -179,7 +183,7 @@ class Goal(QGraphicsRectItem):
 
     def __init__(self):
         super().__init__(0, 0, Character.CHARSIZE, Character.CHARSIZE)
-        self.setBrush(QBrush(QPixmap('data/finish.png')))
+        self.setBrush(QBrush(QPixmap(psykoosi.GOAL)))
 
 
 class Spike(QGraphicsPolygonItem):

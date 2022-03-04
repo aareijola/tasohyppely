@@ -1,0 +1,4 @@
+.vscode
+src/_*
+src/.*
+src/levels

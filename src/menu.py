@@ -5,6 +5,7 @@ from rectbutton import RectButton
 from PyQt5.QtWidgets import QFrame, QGraphicsScene, QGridLayout, QHBoxLayout, QInputDialog, QLabel, QGraphicsRectItem, QLineEdit, QScrollArea, QVBoxLayout, QWidget
 from PyQt5.QtCore import QRectF, Qt
 from loader import listLevels
+import psykoosi
 
 class menu(QWidget):
     '''
@@ -41,7 +42,7 @@ class mainMenu(menu):
     
     def __init__(self):
         super().__init__()
-        self.header.setPixmap(QPixmap("data/title.png"))
+        self.header.setPixmap(QPixmap(psykoosi.MENU))
         self.buttons[0].setText("Opettele pelaamaan")
         self.buttons[1].setText("Lataa oma kenttä")
         self.buttons[2].setText("Kenttäeditori")

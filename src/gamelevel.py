@@ -3,6 +3,7 @@ from PyQt5.QtGui import QBrush, QColor, QColorConstants, QPen, QPixmap
 from characters import Character, Goal, Player, Spike
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QGraphicsRectItem, QGraphicsScene
+import psykoosi
 
 class GameLevel():
     """
@@ -42,7 +43,7 @@ class GameLevel():
         scene.addItem(self.player)
         if self.isPlayable():
             self.player.moveBy(self.spawn.x(), self.spawn.y())
-        scene.setBackgroundBrush(QBrush(QPixmap("data/background.png")))
+        scene.setBackgroundBrush(QBrush(QPixmap(psykoosi.BACKGROUND)))
         
         if self.finish:
             finish = Goal()
